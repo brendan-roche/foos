@@ -17,7 +17,8 @@ pip install marshmallow-sqlalchemy
 ```bash
 > python
 
-import app
+ import app
+from init import db 
 db.create_all() 
 
 CTRL D

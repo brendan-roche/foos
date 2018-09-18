@@ -2,6 +2,7 @@ from datetime import datetime
 from init import db, ma
 from models.team import team_schema, Team
 
+
 class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
@@ -32,35 +33,36 @@ class Game(db.Model):
     team1_score = db.Column(db.Integer, nullable=False)
     team2_score = db.Column(db.Integer, nullable=False)
 
+    team1_rating = db.Column(db.Float, nullable=False, default=1000)
+    team2_rating = db.Column(db.Float, nullable=False, default=1000)
+
     rating_change = db.Column(db.Float, nullable=False)
 
     updated = db.Column(db.DateTime, default=datetime.utcnow)
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, team1_attacker_id, team1_defender_id, team2_attacker_id, team2_defender_id, team1_score,
-                 team2_score, rating_change):
-
+                 team2_score):
         self.team1_attacker_id = team1_attacker_id
         self.team1_defender_id = team1_defender_id
 
         self.team2_attacker_id = team2_attacker_id
         self.team2_defender_id = team2_defender_id
 
-        team1 = Team.find_or_create_team(team1_attacker_id, team1_defender_id)
+        team1 = Team.find_or_create(team1_attacker_id, team1_defender_id)
         self.team1_id = team1.id
 
-        team2 = Team.find_or_create_team(team2_attacker_id, team2_defender_id)
+        team2 = Team.find_or_create(team2_attacker_id, team2_defender_id)
         self.team2_id = team2.id
 
         self.team1_score = team1_score
         self.team2_score = team2_score
-        self.rating_change = rating_change
 
 
 class GameSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('id', 'team1', 'team2', 'team1_score', 'team2_score', 'rating_change', 'created', 'updated')
+        fields = ('id', 'team1', 'team2', 'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change')
 
     team1 = ma.Nested(team_schema)
     team2 = ma.Nested(team_schema)

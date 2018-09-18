@@ -13,11 +13,26 @@ class Player(db.Model):
         self.name = name
         self.short_name = short_name
 
+    def find_player(name):
+        return Player.query.filter(Player.name == name).first()
+
+    @staticmethod
+    def find_or_create(name):
+        player = Player.find_player(name)
+        if player:
+            return player
+
+        new_player = Player(name, name)
+        db.session.add(new_player)
+        db.session.commit()
+
+        return new_player
+
 
 class PlayerSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('id', 'name', 'short_name')
+        fields = ('id', 'name')
 
 
 player_schema = PlayerSchema()

@@ -81,6 +81,13 @@ def get_teams():
     result = teams_schema.dump(all_teams)
     return jsonify(result.data)
 
+# endpoint to show all teams
+@app.route("/team/ranked", methods=["GET"])
+def get_ranked_teams():
+    all_teams = Team.query.filter('wins + losses > 10').order_by('rating DESC').all()
+    result = teams_schema.dump(all_teams)
+    return jsonify(result.data)
+
 
 # endpoint to get team detail by id
 @app.route("/team/<id>", methods=["GET"])

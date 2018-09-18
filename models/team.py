@@ -16,6 +16,10 @@ class Team(db.Model):
     # player2 = db.relationship('Player', backref=db.backref('team', lazy=True))
     player2 = db.relationship('Player', foreign_keys=[player2_id])
 
+    rating = db.Column(db.Integer, nullable=False, default=1000)
+    wins = db.Column(db.Integer, nullable=False, default=0)
+    losses = db.Column(db.Integer, nullable=False, default=0)
+
     updated = db.Column(db.DateTime, default=datetime.utcnow)
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
@@ -29,7 +33,7 @@ class Team(db.Model):
                                      and_(Team.player2_id == player1_id, Team.player1_id == player2_id))).first()
 
     @staticmethod
-    def find_or_create_team(player1_id, player2_id):
+    def find_or_create(player1_id, player2_id):
         team = Team.find_team(player1_id, player2_id)
         if team:
             return team
@@ -42,7 +46,7 @@ class Team(db.Model):
 
 class TeamSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'player1', 'player2', 'created', 'updated')
+        fields = ('id', 'player1', 'player2', 'rating', 'wins', 'losses')
 
     player1 = ma.Nested(player_schema)
     player2 = ma.Nested(player_schema)
