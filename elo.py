@@ -11,12 +11,14 @@ from init import db
 # Players and aliases.
 from models.team import Team
 
+Aaron = ASU = 'Aaron S'
 Alex = A = ALEX = AJ = 'Alex'
 Andy = ANDY = AN = AD = 'Andy'
 AL = ANGELO = 'Angelo'
 Brendan = B = BR = BRENDAN = BD = R = 'Brendan'
 CC = 'Chloe'
 Craig = K = CW = CRAIG = KRAG = KRAIG = CR = CRAG = KW = KV = KR = 'Craig'
+Damian = DAM = 'Damian'
 Dylan = DYL = DY = DN = 'Dylan'
 ED = 'Ed'
 Elliot = E = ELLIOT = EC = EL = EG = 'Elliot'
@@ -31,6 +33,7 @@ Maya = M2 = MA = MAYA = MJ = MAJ = 'Maya'
 Michael = M = MC = CABS = 'Michael C'
 MichaelLee = ML = MLE = L = 'Michael L'
 Milos = D = MD = MI = MIL = MILOS = 'Milos'
+Muhammad = MU = 'Muhammad'
 Nick = N = NICK = NICHOLAS = NC = NI = NG = 'Nick C'
 NW = 'Nick W'
 Omid = O = OM = 'Omid'
@@ -38,7 +41,7 @@ RAJ = 'Rajan'
 S = 'Scott'
 Simon = SH = 'Simon H'
 SimonL = SL = SLG = SIML = SIMONL = SLE = SIMON = SLC = SIM = 'Simon L'
-Will = W = WILL = 'Will D'
+Will = W = WD = WILL = 'Will D'
 V = VS = 'Vorakot'
 
 
@@ -883,6 +886,41 @@ doubles = [
     [MD, MC, 7, JW, E, 10],
     [JH, JC, 10, JW, E, 5],
     [JB, JC, 10, EC, JACK, 3],
+
+    # 19 Sep
+    [EC, GH, 10, WD, AJ, 2],
+    [GH, BR, 10, MC, JW, 7],
+    [GH, MC, 10, EC, JW, 9],
+    [MD, JB, 10, EC, JW, 6],
+    [GH, DAM, 10, WD, AJ, 5],
+    [E, JW, 10, J, AJ, 7],
+    [E, JW, 10, J, MC, 9],
+    [MC, J, 10, JW, E, 5],
+    [MC, J, 9, JW, E, 10],
+    [MC, J, 10, JW, E, 5],
+    [GH, B, 10, E, JIN, 2],
+    [GH, MC, 10, JOSH, BR, 7],
+    [J, MC, 10, JOSH, BR, 10],
+    [GH, BR, 10, NC, JH, 0],
+    [GH, BR, 10, NC, JH, 1],
+    [BR, JC, 10, E, GH, 9],
+    [E, JW, 10, BR, J, 9],
+    ### double check this one ###
+    # [B, JW, 10, MC, GH, 6],
+    ######################
+    [B, JW, 10, MC, GH, 4],
+    [B, JW, 10, MC, GH, 6],
+    [GH, EC, 10, BR, JW, 2],
+    [GH, EC, 8, BR, JW, 10],
+    [EC, JW, 10, BR, ASU, 3],
+    [EC, JW, 10, MC, MU, 5],
+    [B, MC, 10, JH, J, 7],
+    [B, MD, 10, GH, MC, 6],
+    [AJ, B, 7, JW, E, 10],
+    [AJ, B, 9, JW, E, 10],
+    [AJ, B, 9, JW, E, 10],
+
+
 ]
 
 singles = [
