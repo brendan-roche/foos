@@ -13,6 +13,7 @@ class Player(db.Model):
         self.name = name
         self.short_name = short_name
 
+    @staticmethod
     def find_player(name):
         return Player.query.filter(Player.name == name).first()
 

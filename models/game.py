@@ -1,6 +1,7 @@
 from datetime import datetime
 from init import db, ma
-from models.team import team_schema, Team
+from models.player import player_schema
+from models.team import Team
 
 
 class Game(db.Model):
@@ -62,11 +63,12 @@ class Game(db.Model):
 class GameSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('id', 'team1', 'team2', 'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change')
+        fields = ('id', 'team1_id', 'team2_id', 'team1_defender', 'team1_attacker', 'team2_defender', 'team2_attacker', 'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change')
 
-    team1 = ma.Nested(team_schema)
-    team2 = ma.Nested(team_schema)
-
+    team1_defender = ma.Nested(player_schema)
+    team1_attacker = ma.Nested(player_schema)
+    team2_defender = ma.Nested(player_schema)
+    team2_attacker = ma.Nested(player_schema)
 
 game_schema = GameSchema()
 games_schema = GameSchema(many=True)
