@@ -28,13 +28,29 @@ def get_players():
     result = players_schema.dump(all_players)
     return jsonify(result.data)
 
-
 # endpoint to get player detail by id
 @app.route("/player/<id>", methods=["GET"])
 def player_detail(id):
     player = Player.query.get(id)
     return player_schema.jsonify(player)
 
+@app.route("/player/<id>/games", methods=["GET"])
+def player_games(id):
+    games = Player.query.get(id).games
+    result = games_schema.dump(games)
+    return jsonify(result.data)
+
+@app.route("/player/<id>/games/lost", methods=["GET"])
+def player_lost_games(id):
+    games = Player.query.get(id).lost_games
+    result = games_schema.dump(games)
+    return jsonify(result.data)
+
+@app.route("/player/<id>/games/won", methods=["GET"])
+def player_won_games(id):
+    games = Player.query.get(id).won_games
+    result = games_schema.dump(games)
+    return jsonify(result.data)
 
 # endpoint to update player
 @app.route("/player/<id>", methods=["PUT"])
@@ -122,10 +138,9 @@ def add_game():
 
     team1_score = request.json['team1_score']
     team2_score = request.json['team2_score']
-    rating_change = 0
 
     new_game = Game(team1_attacker_id, team1_defender_id, team2_attacker_id, team2_defender_id,
-                    team1_score, team2_score, rating_change)
+                    team1_score, team2_score)
 
     db.session.add(new_game)
     db.session.commit()

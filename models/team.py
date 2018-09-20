@@ -4,17 +4,16 @@ from operator import and_, or_
 from init import db, ma
 from models.player import player_schema
 
-
 class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     player1_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # player1 = db.relationship('Player', backref=db.backref('team', lazy=True))
-    player1 = db.relationship('Player', foreign_keys=[player1_id])
+    player1 = db.relationship('Player', foreign_keys=[player1_id], backref=db.backref('teams', lazy=True))
 
     player2_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # player2 = db.relationship('Player', backref=db.backref('team', lazy=True))
     player2 = db.relationship('Player', foreign_keys=[player2_id])
+
+    games = db.relationship('Game', primaryjoin='or_(Team.id == Game.team1_id, Team.id == Game.team2_id)', lazy=True)
 
     rating = db.Column(db.Integer, nullable=False, default=1000)
     wins = db.Column(db.Integer, nullable=False, default=0)

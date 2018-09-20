@@ -8,27 +8,21 @@ class Game(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     team1_attacker_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # team1 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team1_attacker = db.relationship('Player', foreign_keys=[team1_attacker_id])
 
     team1_defender_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # team1 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team1_defender = db.relationship('Player', foreign_keys=[team1_defender_id])
 
     team1_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
-    # team1 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team1 = db.relationship('Team', foreign_keys=[team1_id])
 
     team2_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
-    # team2 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team2 = db.relationship('Team', foreign_keys=[team2_id])
 
     team2_attacker_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # team1 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team2_attacker = db.relationship('Player', foreign_keys=[team2_attacker_id])
 
     team2_defender_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    # team1 = db.relationship('Team', backref=db.backref('games', lazy=True))
     team2_defender = db.relationship('Player', foreign_keys=[team2_defender_id])
 
     team1_score = db.Column(db.Integer, nullable=False)

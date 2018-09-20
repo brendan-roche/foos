@@ -9,6 +9,35 @@ class Player(db.Model):
     updated = db.Column(db.DateTime, default=datetime.utcnow)
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
+    games = db.relationship('Game',
+                            primaryjoin='or_('
+                                        'Player.id == Game.team1_attacker_id,'
+                                        'Player.id == Game.team1_defender_id,'
+                                        'Player.id == Game.team2_attacker_id,'
+                                        'Player.id == Game.team2_defender_id)',
+                            lazy=True)
+
+    lost_games = db.relationship('Game',
+                            primaryjoin='or_('
+                                        'and_(or_('
+                                        'Player.id == Game.team1_attacker_id,'
+                                        'Player.id == Game.team1_defender_id), Game.team1_score < Game.team2_score),'
+                                        'and_(or_('
+                                        'Player.id == Game.team2_attacker_id,'
+                                        'Player.id == Game.team2_defender_id), Game.team2_score < Game.team1_score)'
+                                        ')',
+                            lazy=True)
+
+    won_games = db.relationship('Game',
+                            primaryjoin='or_('
+                                        'and_(or_('
+                                        'Player.id == Game.team1_attacker_id,'
+                                        'Player.id == Game.team1_defender_id), Game.team1_score > Game.team2_score),'
+                                        'and_(or_('
+                                        'Player.id == Game.team2_attacker_id,'
+                                        'Player.id == Game.team2_defender_id), Game.team2_score > Game.team1_score)'
+                                        ')',
+                            lazy=True)
     def __init__(self, name, short_name):
         self.name = name
         self.short_name = short_name
