@@ -1,0 +1,7 @@
+*
+!.gitignore
+!sqldialects.xml
+!misc.xml
+!inspectionProfiles
+!scopes
+!codeStyleSettings.xml
