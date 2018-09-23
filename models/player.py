@@ -2,6 +2,7 @@ from datetime import datetime
 
 from init import db, ma
 
+
 class Player(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
@@ -64,6 +65,12 @@ class PlayerSchema(ma.Schema):
         # Fields to expose
         fields = ('id', 'name')
 
+class PlayerStatsSchema(ma.Schema):
+    class Meta:
+        # Fields to expose
+        fields = ('id', 'name', 'wins', 'losses', 'attacker', 'attacker_wins', 'defender', 'defender_wins', 'donuts', 'games')
+
 
 player_schema = PlayerSchema()
 players_schema = PlayerSchema(many=True)
+player_stats_schema = PlayerStatsSchema(many=True)
