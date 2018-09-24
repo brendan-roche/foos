@@ -58,6 +58,12 @@ def player_won_games(id):
     result = games_schema.dump(games)
     return jsonify(result.data)
 
+@app.route("/player/<id>/teams", methods=["GET"])
+def player_teams(id):
+    teams = Player.query.get(id).teams
+    result = teams_schema.dump(teams)
+    return jsonify(result.data)
+
 
 # endpoint to update player
 @app.route("/player/<id>", methods=["PUT"])
@@ -118,6 +124,14 @@ def get_ranked_teams():
 def team_detail(id):
     team = Team.query.get(id)
     return team_schema.jsonify(team)
+
+# endpoint to show all players
+@app.route("/team/<id>/games", methods=["GET"])
+def get_team_games(id):
+    team = Team.query.get(id)
+    team_games = team.games
+    result = games_schema.dump(team_games)
+    return jsonify(result.data)
 
 
 # endpoint to find a team given the player ids

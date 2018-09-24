@@ -39,6 +39,13 @@ class Player(db.Model):
                                         'Player.id == Game.team2_defender_id), Game.team2_score > Game.team1_score)'
                                         ')',
                             lazy=True)
+
+    teams = db.relationship('Team',
+                            primaryjoin='or_('
+                                        'Player.id == Team.player1_id,'
+                                        'Player.id == Team.player2_id)',
+                            lazy=True)
+
     def __init__(self, name, short_name):
         self.name = name
         self.short_name = short_name

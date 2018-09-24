@@ -8,7 +8,7 @@ class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     player1_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
-    player1 = db.relationship('Player', foreign_keys=[player1_id], backref=db.backref('teams', lazy=True))
+    player1 = db.relationship('Player', foreign_keys=[player1_id])
 
     player2_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
     player2 = db.relationship('Player', foreign_keys=[player2_id])
