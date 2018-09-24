@@ -41,7 +41,7 @@ docker rm foos-psql
 ```bash
 > python
 
- import app
+import app
 from init import db 
 db.create_all() 
 
