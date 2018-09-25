@@ -3,7 +3,8 @@ from datetime import datetime
 from elo import calculate_elo
 from init import db, ma
 from models.player import player_schema
-from models.team import Team
+from models.team import Team, team_schema
+from marshmallow import fields
 
 
 class Game(db.Model):
@@ -74,5 +75,29 @@ class GameSchema(ma.Schema):
     team2_defender = ma.Nested(player_schema)
     team2_attacker = ma.Nested(player_schema)
 
+
+class GameResultSchema(ma.Schema):
+    class Meta:
+        fields = ('team1_score', 'team2_score', 'team1_rating_change', 'team2_rating_change')
+
+    team1_score = fields.Integer()
+    team2_score = fields.Integer()
+    team1_rating_change = fields.Float()
+    team2_rating_change = fields.Float()
+
+
+game_results_schema = GameResultSchema(many=True)
+
+
+class GamesWhatIfSchema(ma.Schema):
+    class Meta:
+        fields = ('team1', 'team2', 'scenarios')
+
+    team1 = ma.Nested(team_schema)
+    team2 = ma.Nested(team_schema)
+    scenarios = ma.Nested(game_results_schema, many=True)
+
+
 game_schema = GameSchema()
 games_schema = GameSchema(many=True)
+games_whatif_schema = GamesWhatIfSchema()

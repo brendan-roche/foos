@@ -2,9 +2,10 @@ from flask import request, jsonify
 from sqlalchemy import func, case, and_, or_
 from sqlalchemy.sql import label
 
-from models.game import Game, games_schema, game_schema
+from models.game import Game, games_schema, game_schema, games_whatif_schema
 from models.player import Player, player_schema, players_schema, player_stats_schema
 from models.team import Team, teams_schema, team_schema
+from elo import calculate_elo
 
 from init import db, app
 
@@ -57,6 +58,7 @@ def player_won_games(id):
     games = Player.query.get(id).won_games
     result = games_schema.dump(games)
     return jsonify(result.data)
+
 
 @app.route("/player/<id>/teams", methods=["GET"])
 def player_teams(id):
@@ -125,6 +127,7 @@ def team_detail(id):
     team = Team.query.get(id)
     return team_schema.jsonify(team)
 
+
 # endpoint to show all players
 @app.route("/team/<id>/games", methods=["GET"])
 def get_team_games(id):
@@ -178,6 +181,33 @@ def add_game():
     db.session.commit()
 
     return game_schema.jsonify(new_game)
+
+
+@app.route("/game/whatif", methods=["POST"])
+def what_if_game():
+    team1_attacker_id = request.json['team1_attacker_id']
+    team1_defender_id = request.json['team1_defender_id']
+    team2_attacker_id = request.json['team2_attacker_id']
+    team2_defender_id = request.json['team2_defender_id']
+    t1 = Team.find_or_create(team1_attacker_id, team1_defender_id)
+    t2 = Team.find_or_create(team2_attacker_id, team2_defender_id)
+    scenarios = []
+
+    for i in range(10):
+        [p1_change, p2_change] = calculate_elo(10, i, t1.rating, t2.rating)
+        rating_change = round(p1_change, 2)
+        scenarios.append(dict(team1_score=10, team2_score=i, team1_rating_change=rating_change,
+                              team2_rating_change=-rating_change))
+
+    for i in range(9, -1, -1):
+        [p1_change, p2_change] = calculate_elo(i, 10, t1.rating, t2.rating)
+        rating_change = round(p1_change, 2)
+        scenarios.append(dict(team1_score=i, team2_score=10, team1_rating_change=rating_change,
+                              team2_rating_change=-rating_change))
+
+    data = dict(team1=t1, team2=t2, scenarios=scenarios)
+
+    return games_whatif_schema.jsonify(data)
 
 
 # endpoint to show all players
