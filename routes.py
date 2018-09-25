@@ -165,6 +165,16 @@ def add_game():
                     team1_score, team2_score)
 
     db.session.add(new_game)
+
+    team1 = new_game.team1
+    team2 = new_game.team2
+
+    team1.rating = new_game.team1_rating
+    team2.rating = new_game.team2_rating
+
+    db.session.add(team1)
+    db.session.add(team2)
+
     db.session.commit()
 
     return game_schema.jsonify(new_game)
@@ -193,7 +203,6 @@ def game_update(id):
     game.team2_id = request.json['team2_id']
     game.team1_score = request.json['team1_score']
     game.team2_score = request.json['team2_score']
-    game.rating_change = request.json['rating_change']
 
     db.session.commit()
     return game_schema.jsonify(game)

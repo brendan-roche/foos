@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from elo import calculate_elo
 from init import db, ma
 from models.player import player_schema
 from models.team import Team
@@ -53,11 +55,19 @@ class Game(db.Model):
         self.team1_score = team1_score
         self.team2_score = team2_score
 
+        [p1_change, p2_change] = calculate_elo(team1_score, team2_score, team1.rating, team2.rating)
+
+        self.rating_change = p1_change
+
+        self.team1_rating = team1.rating + p1_change
+        self.team2_rating = team2.rating + p2_change
+
 
 class GameSchema(ma.Schema):
     class Meta:
         # Fields to expose
-        fields = ('id', 'team1_id', 'team2_id', 'team1_defender', 'team1_attacker', 'team2_defender', 'team2_attacker', 'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change')
+        fields = ('id', 'team1_id', 'team2_id', 'team1_defender', 'team1_attacker', 'team2_defender', 'team2_attacker',
+                  'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change')
 
     team1_defender = ma.Nested(player_schema)
     team1_attacker = ma.Nested(player_schema)
