@@ -53,7 +53,7 @@ If using sqlite db, and you wish to reimport all the games, first delete `foos.s
 ```bash
 > python
 
-import app
+import application
 from init import db 
 db.create_all() 
 
@@ -62,15 +62,53 @@ CTRL D
 > python import_games.py
 ```
 
-Running api server:
+Running local api server:
 
 ```
-> python app.py
+> python application.py
 ```
+
+You can then access in browser or postman via endpoints:
+
+http://localhost:5000/team
+
+http://localhost:5000/player
+
+http://localhost:5000/game
+
+### Deployment to AWS
+To be able to deploy to AWS Elastic Beanstalk, you need to install EB CLI described here:
+https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html
+```
+pip install awsebcli --upgrade --user
+```
+
+You will then need to initialise eb deployment:
+```
+eb init
+```
+
+Then for any changes to app we simply run
+```
+eb deploy
+```
+
+And to open base url in browser:
+```
+eb open
+```
+
+Currently base url on EB env is:
+
+http://foos-env.yxttfhyga8.ap-southeast-2.elasticbeanstalk.com/
+
 
 ### References
-- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
 
 - https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-1-fae9ff66a706
 
 - https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-2-724ebf04d12
+
+- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
+
+- http://blog.uptill3.com/2012/08/25/python-on-elastic-beanstalk.html
