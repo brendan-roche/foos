@@ -47,21 +47,31 @@ class Game(db.Model):
         self.team2_attacker_id = team2_attacker_id
         self.team2_defender_id = team2_defender_id
 
-        team1 = Team.find_or_create(team1_attacker_id, team1_defender_id)
-        self.team1_id = team1.id
+        self.team1 = Team.find_or_create(team1_attacker_id, team1_defender_id)
+        self.team1_id = self.team1.id
 
-        team2 = Team.find_or_create(team2_attacker_id, team2_defender_id)
-        self.team2_id = team2.id
+        self.team2 = Team.find_or_create(team2_attacker_id, team2_defender_id)
+        self.team2_id = self.team2.id
 
         self.team1_score = team1_score
         self.team2_score = team2_score
 
-        [p1_change, p2_change] = calculate_elo(team1_score, team2_score, team1.rating, team2.rating)
+        if team1_score > team2_score:
+            self.team1.wins += 1
+            self.team2.losses += 1
+        else:
+            self.team2.wins += 1
+            self.team1.losses += 1
+
+        [p1_change, p2_change] = calculate_elo(team1_score, team2_score, self.team1.rating, self.team2.rating)
 
         self.rating_change = p1_change
 
-        self.team1_rating = team1.rating + p1_change
-        self.team2_rating = team2.rating + p2_change
+        self.team1_rating = self.team1.rating + p1_change
+        self.team2_rating = self.team2.rating + p2_change
+
+        self.team1.rating = self.team1_rating
+        self.team2.rating = self.team2_rating
 
 
 class GameSchema(ma.Schema):

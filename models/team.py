@@ -25,6 +25,9 @@ class Team(db.Model):
     def __init__(self, player1_id, player2_id):
         self.player1_id = player1_id
         self.player2_id = player2_id
+        self.rating = 1000
+        self.wins = 0
+        self.losses = 0
 
     @staticmethod
     def find_team(player1_id, player2_id):
@@ -37,11 +40,7 @@ class Team(db.Model):
         if team:
             return team
 
-        new_team = Team(player1_id, player2_id)
-        db.session.add(new_team)
-        db.session.commit()
-
-        return new_team
+        return Team(player1_id, player2_id)
 
 class TeamSchema(ma.Schema):
     class Meta:

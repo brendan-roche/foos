@@ -2,15 +2,8 @@ import sys
 
 from models.game import Game
 from models.player import Player
-from elo import calculate_elo
-
-from pprint import pprint
 
 from init import db
-
-
-# Players and aliases.
-from models.team import Team
 
 Aaron = ASU = 'Aaron S'
 Alex = A = ALEX = AJ = 'Alex'
@@ -1133,71 +1126,31 @@ players = {}
 
 print("Individual games:\n")
 game_number = 1
-for game in games:
-    if game['p1'] not in players:
-        players[game['p1']] = {
-            'wins': 0,
-            'losses': 0,
-            'rating': 1000.0,
-        }
-
-    if game['p2'] not in players:
-        players[game['p2']] = {
-            'wins': 0,
-            'losses': 0,
-            'rating': 1000.0,
-        }
-
-    if game['p1score'] > game['p2score']:
-        players[game['p1']]['wins'] += 1
-        players[game['p2']]['losses'] += 1
-    else:
-        players[game['p2']]['wins'] += 1
-        players[game['p1']]['losses'] += 1
-
-    [r1_change, r2_change] = calculate_elo(
-        game['p1score'],
-        game['p2score'],
-        players[game['p1']]['rating'],
-        players[game['p2']]['rating']
-    )
-
-    r1 = r1_change + players[game['p1']]['rating']
-    r2 = r2_change + players[game['p2']]['rating']
-
-    print(
-        "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f)\n" % (
-            game_number, game['p1'], game['p1score'],
-            players[game['p1']]['rating'], r1, r1_change,
-            game['p2'], game['p2score'], players[game['p2']]['rating'], r2,
-            r2 - players[game['p2']]['rating']))
-
-    players[game['p1']]['rating'] = t1_rating = round(r1, 6)
-    players[game['p2']]['rating'] = t2_rating = round(r2, 6)
+for g in games:
 
     game_number += 1
 
-    t1_p1 = Player.find_or_create(game['p1_players'][0])
-    t1_p2 = Player.find_or_create(game['p1_players'][1])
-    t2_p1 = Player.find_or_create(game['p2_players'][0])
-    t2_p2 = Player.find_or_create(game['p2_players'][1])
-    t1 = Team.find_or_create(t1_p1.id, t1_p2.id)
-    t2 = Team.find_or_create(t2_p1.id, t2_p2.id)
+    t1_p1 = Player.find_or_create(g['p1_players'][0])
+    t1_p2 = Player.find_or_create(g['p1_players'][1])
+    t2_p1 = Player.find_or_create(g['p2_players'][0])
+    t2_p2 = Player.find_or_create(g['p2_players'][1])
 
-    t1.rating = t1_rating
-    t2.rating = t2_rating
+    game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'])
 
-    if game['p1score'] > game['p2score']:
-        t1.wins += 1
-        t2.losses += 1
-    else:
-        t2.wins += 1
-        t1.losses += 1
-
-    game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, game['p1score'], game['p2score'])
-    game.team1_rating = t1_rating
-    game.team2_rating = t2_rating
-    game.rating_change = r1_change
+    print(
+        "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f)\n" % (
+            game_number,
+            g['p1'],
+            game.team1_score,
+            game.team1_rating - game.rating_change,
+            game.team1_rating,
+            game.rating_change,
+            g['p2'],
+            game.team2_score,
+            game.team2_rating + game.rating_change,
+            game.team2_rating,
+            -game.rating_change
+        ))
 
     db.session.add(game)
     db.session.commit()

@@ -164,20 +164,16 @@ def add_game():
     team1_score = request.json['team1_score']
     team2_score = request.json['team2_score']
 
-    new_game = Game(team1_attacker_id, team1_defender_id, team2_attacker_id, team2_defender_id,
-                    team1_score, team2_score)
+    new_game = Game(
+        team1_attacker_id,
+        team1_defender_id,
+        team2_attacker_id,
+        team2_defender_id,
+        team1_score,
+        team2_score
+    )
 
     db.session.add(new_game)
-
-    team1 = new_game.team1
-    team2 = new_game.team2
-
-    team1.rating = new_game.team1_rating
-    team2.rating = new_game.team2_rating
-
-    db.session.add(team1)
-    db.session.add(team2)
-
     db.session.commit()
 
     return game_schema.jsonify(new_game)
