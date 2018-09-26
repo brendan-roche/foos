@@ -1,20 +1,31 @@
 
-Project adapted from:
-
-https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-1-fae9ff66a706
-https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-2-724ebf04d12
-
 ### Requirements
-Python 3
+python >= 3.6
+pip >= 18.x
+virtualenv >= 16.0.0
+
+```
+brew install python3
+brew install pip3
+brew install virtualenv
+```
 
 ### Install Steps
 
+To setup virtual environment, from within project directory:
+```
+virtualenv virt
+source virt/bin/activate
+```
+
+To deactivate virtual env any time:
+```
+deactivate
+```
+
+Install dependencies with virtual environment
 ```bash
-pip install Flask
-pip install flask_sqlalchemy
-pip install flask_marshmallow
-pip install marshmallow-sqlalchemy
-pip install psycopg2
+pip install Flask flask_sqlalchemy flask_marshmallow marshmallow-sqlalchemy psycopg2
 ```
 
 Install Docker locally
@@ -37,6 +48,7 @@ docker stop foos-psql
 docker rm foos-psql
 ```
 
+If using sqlite db, and you wish to reimport all the games, first delete `foos.sqlite`:
 
 ```bash
 > python
@@ -47,5 +59,18 @@ db.create_all()
 
 CTRL D
 
+> python import_games.py
+```
+
+Running api server:
+
+```
 > python app.py
 ```
+
+### References
+- https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-flask.html
+
+- https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-1-fae9ff66a706
+
+- https://medium.com/python-pandemonium/build-simple-restful-api-with-python-and-flask-part-2-724ebf04d12
