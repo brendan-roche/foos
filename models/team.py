@@ -19,6 +19,18 @@ class Team(db.Model):
         lazy='dynamic'
     )
 
+    games_won = db.relationship(
+        'Game',
+        primaryjoin='or_(and_(Team.id == Game.team1_id, Game.team1_score > Game.team2_score), and_(Team.id == Game.team2_id, Game.team2_score > Game.team1_score))',
+        lazy='dynamic'
+    )
+
+    games_lost = db.relationship(
+        'Game',
+        primaryjoin='or_(and_(Team.id == Game.team1_id, Game.team1_score < Game.team2_score), and_(Team.id == Game.team2_id, Game.team2_score < Game.team1_score))',
+        lazy='dynamic'
+    )
+
     rating = db.Column(db.Integer, nullable=False, default=1000)
     wins = db.Column(db.Integer, nullable=False, default=0)
     losses = db.Column(db.Integer, nullable=False, default=0)

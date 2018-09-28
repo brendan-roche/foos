@@ -128,13 +128,32 @@ def team_detail(id):
     return team_schema.jsonify(team)
 
 
-# endpoint to show all players
+# endpoint to show team games
 @app.route("/team/<id>/games", methods=["GET"])
 def get_team_games(id):
     team = Team.query.get(id)
     team_games = team.games
     result = games_schema.dump(team_games)
     return jsonify(result.data)
+
+
+# endpoint to show team games won
+@app.route("/team/<id>/games/won", methods=["GET"])
+def get_team_games_won(id):
+    team = Team.query.get(id)
+    team_games = team.games_won
+    result = games_schema.dump(team_games)
+    return jsonify(result.data)
+
+
+# endpoint to show team games lost
+@app.route("/team/<id>/games/lost", methods=["GET"])
+def get_team_games_lost(id):
+    team = Team.query.get(id)
+    team_games = team.games_lost
+    result = games_schema.dump(team_games)
+    return jsonify(result.data)
+
 
 @app.route("/team/<id1>/games/<id2>", methods=["GET"])
 def get_teams_head_to_head(id1, id2):
