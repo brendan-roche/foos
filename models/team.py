@@ -13,7 +13,11 @@ class Team(db.Model):
     player2_id = db.Column(db.Integer, db.ForeignKey('player.id'), nullable=False)
     player2 = db.relationship('Player', foreign_keys=[player2_id])
 
-    games = db.relationship('Game', primaryjoin='or_(Team.id == Game.team1_id, Team.id == Game.team2_id)', lazy=True)
+    games = db.relationship(
+        'Game',
+        primaryjoin='or_(Team.id == Game.team1_id, Team.id == Game.team2_id)',
+        lazy='dynamic'
+    )
 
     rating = db.Column(db.Integer, nullable=False, default=1000)
     wins = db.Column(db.Integer, nullable=False, default=0)

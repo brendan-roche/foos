@@ -136,6 +136,14 @@ def get_team_games(id):
     result = games_schema.dump(team_games)
     return jsonify(result.data)
 
+@app.route("/team/<id1>/games/<id2>", methods=["GET"])
+def get_teams_head_to_head(id1, id2):
+    team = Team.query.get(id1)
+
+    team_games = team.games.filter(or_(Game.team1_id == id2, Game.team2_id == id2)).all()
+    result = games_schema.dump(team_games)
+    return jsonify(result.data)
+
 
 # endpoint to find a team given the player ids
 @app.route("/team/find/<player_id1>/<player_id2>", methods=["GET"])
