@@ -32,6 +32,14 @@ def get_players():
     return jsonify(result.data)
 
 
+# endpoint to find players matching a name
+@app.route("/player/find/<name>", methods=["GET"])
+def get_players_matching(name):
+    all_players = Player.query.filter(or_(Player.name.like('%' + name + '%'), Player.short_name.like('%' + name + '%'))).all()
+    result = players_schema.dump(all_players)
+    return jsonify(result.data)
+
+
 # endpoint to get player detail by id
 @app.route("/player/<id>", methods=["GET"])
 def player_detail(id):
