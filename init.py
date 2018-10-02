@@ -7,7 +7,9 @@ import os
 application = Flask(__name__)
 app = application
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'foos.sqlite')
+configModule = 'config.DevelopmentConfig' if os.environ.get('FLASK_ENV',
+                                                            default="production") == 'dev' else 'config.ProductionConfig'
+app.config.from_object(configModule)
+
 db = SQLAlchemy(app)
 ma = Marshmallow(app)

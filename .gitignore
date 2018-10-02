@@ -30,6 +30,9 @@ pip-log.txt
 instance/
 .webassets-cache
 
+# sqlite db
+foos.sqlite
+
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

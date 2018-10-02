@@ -31,7 +31,7 @@ pip install Flask flask_sqlalchemy flask_marshmallow marshmallow-sqlalchemy
 
 ### Running Locally
 ```bash
-python application.py
+FLASK_ENV=dev python application.py
 ```
 
 You can then access in browser or postman via endpoints:
@@ -89,7 +89,7 @@ eb open
 
 Currently base url on EB env is:
 
-http://foos-env.yxttfhyga8.ap-southeast-2.elasticbeanstalk.com/
+http://foos-env.qezemyyhhg.ap-southeast-2.elasticbeanstalk.com
 
 
 
