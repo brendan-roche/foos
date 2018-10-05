@@ -28,6 +28,14 @@ Install dependencies with virtual environment
 pip install Flask flask_sqlalchemy flask_marshmallow marshmallow-sqlalchemy
 ```
 
+### Importing games locally
+To create the new database structure and import the games recorded from the score cards:
+
+```bash
+FLASK_ENV=dev python import_games.py --reset
+```
+
+**Note**: If you don't specify `--reset`, the db will not be reset and all games in the script will be added
 
 ### Running Locally
 ```bash
@@ -70,15 +78,7 @@ sudo su
 cd /opt/python/current/app
 source /opt/python/run/venv/bin/activate
 
-python
-
-import application
-from init import db 
-db.create_all() 
-
-CTRL D
-
-python import_games.py
+python import_games.py --reset
 ```
 
 

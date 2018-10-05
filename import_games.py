@@ -1,4 +1,5 @@
 import sys
+import argparse
 
 from models.game import Game
 from models.player import Player
@@ -1101,6 +1102,21 @@ def team(p1, p2):
     return '%s / %s' % (p2, p1)
 
 
+def resetDb():
+    db.drop_all()
+    db.create_all()
+
+parser = argparse.ArgumentParser(description='Import games into db.')
+parser.add_argument('--reset', dest='resetDb', action='store_true', help='reset db (default: false)')
+parser.set_defaults(resetDb=False)
+
+args = parser.parse_args()
+
+# resets database!
+if (args.resetDb):
+    resetDb()
+
+
 games = []
 individual_players = set()
 for parts in doubles:
@@ -1153,19 +1169,20 @@ for g in games:
         ))
 
     db.session.add(game)
-    db.session.commit()
+
+db.session.commit()
 
 
 # print('Total:')
-# print('  Teams: %s' % len(players))
-# print('  Games: %s' % sum([int(g['wins']) for g in players.iterkeys()]))
-# print
-
+# print(('  Teams: %s' % len(players)))
+# print(('  Games: %s' % sum([int(g['wins']) for g in players.keys()])))
+# print()
+#
 # print('Rank         Team          Elo       Wins    Losses')
 # rank = 1
 # total = 0
 # single_players = {}
-# for player, p in sorted(players.iteritems(), key=lambda (k, v): (v['rating'], k),
+# for player, p in sorted(iter(players.items()), key=lambda k_v: (k_v[1]['rating'], k_v[0]),
 #                         reverse=True):
 #     # Exclude any teams that have not played enough games
 #     if p['wins'] + p['losses'] < 10:
@@ -1182,8 +1199,8 @@ for g in games:
 #     if len(single_players[p2]) < 3:
 #         single_players[p2].append(rank)
 #
-#     print('%4s %20s %7.1f %5s %7s' % (
-#         rank, player, p['rating'], p['wins'], p['losses']))
+#     print(('%4s %20s %7.1f %5s %7s' % (
+#         rank, player, p['rating'], p['wins'], p['losses'])))
 #     total += p['rating']
 #     rank += 1
 
