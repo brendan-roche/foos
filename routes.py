@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from sqlalchemy import func, case, and_, or_
+from sqlalchemy import func, case, and_, or_, desc, text
 from sqlalchemy.sql import label
 
 from models.game import Game, games_schema, game_schema, games_whatif_schema
@@ -124,7 +124,7 @@ def get_teams():
 # endpoint to show all teams
 @app.route("/team/ranked", methods=["GET"])
 def get_ranked_teams():
-    all_teams = Team.query.filter('wins + losses > 10').order_by('rating DESC').all()
+    all_teams = Team.query.filter(text('wins + losses > 10')).order_by(desc(Team.rating)).all()
     result = teams_schema.dump(all_teams)
     return jsonify(result.data)
 

@@ -45,6 +45,9 @@ class Team(db.Model):
         self.wins = 0
         self.losses = 0
 
+    def team_name(self):
+        return self.player1.name + ' / ' + self.player2.name
+
     @staticmethod
     def find_team(player1_id, player2_id):
         return Team.query.filter(or_(and_(Team.player1_id == player1_id, Team.player2_id == player2_id),

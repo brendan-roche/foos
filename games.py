@@ -1,11 +1,3 @@
-import sys
-import argparse
-
-from models.game import Game
-from models.player import Player
-
-from init import db
-
 Aaron = ASU = 'Aaron S'
 Alex = A = ALEX = AJ = 'Alex'
 ANDREW = AH = 'Andrew H'
@@ -23,7 +15,7 @@ Jack = JACK = JW = 'Jack'
 Jamie = JA = JAMIE = JH = H = JAM = JN = JM = 'Jamie'
 JC = 'Justin'
 JK = 'Jordan'
-JOSH = 'Josh'
+JOSH = JS = 'Josh'
 Jingbo = J = JING = JB = JI = JINGBO = JIN = JJ = 'Jingbo'
 LAX = LK = 'Lakshey'
 Maya = M2 = MA = MAYA = MJ = MAJ = 'Maya'
@@ -45,7 +37,6 @@ V = VS = 'Vorakot'
 AW = 'AW'
 AS = 'AS'
 ER = 'ER'
-JS = 'JS'
 KN = 'KN'
 NE = 'NE'
 HW = 'HW'
@@ -1019,7 +1010,8 @@ doubles = [
     [GH, JC, 10, B, MC, 3],
     [JOSH, SLG, 10, B, AH, 9],
     [J, MD, 7, B, AJ, 10],
-    [MA, MC, 10, B, AJ, 7],
+    ### Maya ?? ###
+    # [MA, MC, 10, B, AJ, 7],
     [JW, E, 10, MU, B, 8],
     [B, MC, 10, E, JW, 8],
     [B, J, 10, E, JW, 9],
@@ -1093,117 +1085,3 @@ singles = [
 
     [B, 10, E, 1],
 ]
-
-
-def team(p1, p2):
-    if p1 < p2:
-        return '%s / %s' % (p1, p2)
-
-    return '%s / %s' % (p2, p1)
-
-
-def resetDb():
-    db.drop_all()
-    db.create_all()
-
-parser = argparse.ArgumentParser(description='Import games into db.')
-parser.add_argument('--reset', dest='resetDb', action='store_true', help='reset db (default: false)')
-parser.set_defaults(resetDb=False)
-
-args = parser.parse_args()
-
-# resets database!
-if (args.resetDb):
-    resetDb()
-
-
-games = []
-individual_players = set()
-for parts in doubles:
-    try:
-        games.append({
-            'p1_players': [parts[0], parts[1]],
-            'p1': team(parts[0], parts[1]),
-            'p1score': float(parts[2]),
-            'p2': team(parts[3], parts[4]),
-            'p2_players': [parts[3], parts[4]],
-            'p2score': float(parts[5]),
-        })
-
-        individual_players.add(parts[0])
-        individual_players.add(parts[1])
-        individual_players.add(parts[3])
-        individual_players.add(parts[4])
-    except:
-        print("Failed: %s", parts)
-        sys.exit(1)
-
-players = {}
-
-print("Individual games:\n")
-game_number = 1
-for g in games:
-
-    game_number += 1
-
-    t1_p1 = Player.find_or_create(g['p1_players'][0])
-    t1_p2 = Player.find_or_create(g['p1_players'][1])
-    t2_p1 = Player.find_or_create(g['p2_players'][0])
-    t2_p2 = Player.find_or_create(g['p2_players'][1])
-
-    game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'])
-
-    print(
-        "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f)\n" % (
-            game_number,
-            g['p1'],
-            game.team1_score,
-            game.team1_rating - game.rating_change,
-            game.team1_rating,
-            game.rating_change,
-            g['p2'],
-            game.team2_score,
-            game.team2_rating + game.rating_change,
-            game.team2_rating,
-            -game.rating_change
-        ))
-
-    db.session.add(game)
-
-db.session.commit()
-
-
-# print('Total:')
-# print(('  Teams: %s' % len(players)))
-# print(('  Games: %s' % sum([int(g['wins']) for g in players.keys()])))
-# print()
-#
-# print('Rank         Team          Elo       Wins    Losses')
-# rank = 1
-# total = 0
-# single_players = {}
-# for player, p in sorted(iter(players.items()), key=lambda k_v: (k_v[1]['rating'], k_v[0]),
-#                         reverse=True):
-#     # Exclude any teams that have not played enough games
-#     if p['wins'] + p['losses'] < 10:
-#         continue
-#
-#     p1, p2 = player.split(' / ')
-#     if p1 not in single_players:
-#         single_players[p1] = []
-#     if p2 not in single_players:
-#         single_players[p2] = []
-#
-#     if len(single_players[p1]) < 3:
-#         single_players[p1].append(rank)
-#     if len(single_players[p2]) < 3:
-#         single_players[p2].append(rank)
-#
-#     print(('%4s %20s %7.1f %5s %7s' % (
-#         rank, player, p['rating'], p['wins'], p['losses'])))
-#     total += p['rating']
-#     rank += 1
-
-
-def mean(numbers):
-    return float(sum(numbers)) / max(len(numbers), 1)
