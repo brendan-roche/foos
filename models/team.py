@@ -1,8 +1,10 @@
 from datetime import datetime
 from operator import and_, or_
 
+from trueskill import Rating
+
 from init import db, ma
-from models.player import player_schema
+from models.player import basic_player_schema
 
 class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -31,7 +33,9 @@ class Team(db.Model):
         lazy='dynamic'
     )
 
-    rating = db.Column(db.Integer, nullable=False, default=1000)
+    rating = db.Column(db.Float, nullable=False, default=1000)
+    trueskill = db.Column(db.Float, nullable=False, default=25)
+    trueskill_sigma = db.Column(db.Float, nullable=False)
     wins = db.Column(db.Integer, nullable=False, default=0)
     losses = db.Column(db.Integer, nullable=False, default=0)
 
@@ -42,6 +46,9 @@ class Team(db.Model):
         self.player1_id = player1_id
         self.player2_id = player2_id
         self.rating = 1000
+        trueskill = Rating()
+        self.trueskill = trueskill.mu
+        self.trueskill_sigma = trueskill.sigma
         self.wins = 0
         self.losses = 0
 
@@ -63,10 +70,10 @@ class Team(db.Model):
 
 class TeamSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'player1', 'player2', 'rating', 'wins', 'losses')
+        fields = ('id', 'player1', 'player2', 'rating', 'trueskill', 'trueskill_sigma', 'wins', 'losses')
 
-    player1 = ma.Nested(player_schema)
-    player2 = ma.Nested(player_schema)
+    player1 = ma.Nested(basic_player_schema)
+    player2 = ma.Nested(basic_player_schema)
 
 
 team_schema = TeamSchema()

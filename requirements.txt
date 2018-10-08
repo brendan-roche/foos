@@ -10,4 +10,5 @@ marshmallow-sqlalchemy==0.14.1
 psycopg2==2.7.5
 six==1.11.0
 SQLAlchemy==1.2.12
+trueskill==0.4.5
 Werkzeug==0.14.1

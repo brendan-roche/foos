@@ -64,18 +64,26 @@ for g in games:
     game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'])
 
     print(
-        "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f)\n" % (
+        "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f) | %11.6f -> %11.6f (%+.6f, %11.6fσ)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f) | %11.6f -> %11.6f (%+.6f, %11.6fσ)\n" % (
             game_number,
             g['p1'],
             game.team1_score,
             game.team1_rating - game.rating_change,
             game.team1_rating,
             game.rating_change,
+            game.team1_trueskill - game.team1_trueskill_change,
+            game.team1_trueskill,
+            game.team1_trueskill_change,
+            game.team1_trueskill_sigma,
             g['p2'],
             game.team2_score,
             game.team2_rating + game.rating_change,
             game.team2_rating,
-            -game.rating_change
+            -game.rating_change,
+            game.team2_trueskill - game.team2_trueskill_change,
+            game.team2_trueskill,
+            game.team2_trueskill_change,
+            game.team2_trueskill_sigma,
         ))
 
     db.session.add(game)

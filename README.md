@@ -25,7 +25,7 @@ deactivate
 
 Install dependencies with virtual environment
 ```bash
-pip install Flask flask_sqlalchemy flask_marshmallow marshmallow-sqlalchemy
+pip install Flask flask_sqlalchemy flask_marshmallow marshmallow-sqlalchemy trueskill
 ```
 
 ### Importing games locally
