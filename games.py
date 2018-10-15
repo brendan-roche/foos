@@ -48,6 +48,7 @@ doubles = [
     [Elliot, JC, 7, Brendan, Maya, 10],
     [Elliot, JC, 10, Brendan, Maya, 8],
 
+    # 1
     [Jamie, Milos, 7, Omid, Jingbo, 10],
     [Elliot, Jingbo, 6, Jamie, Milos, 10],
     [Nick, Brendan, 7, Jamie, Milos, 10],
@@ -66,12 +67,13 @@ doubles = [
     [Brendan, Jingbo, 10, Michael, Elliot, 8],
     [Jingbo, Brendan, 10, Michael, Elliot, 6],
     [Jingbo, Brendan, 10, JC, Elliot, 8],
-    # [Elliot, Brendan, 10, Jamie, Michael, 10],
+    [Elliot, Brendan, 4, Jamie, Michael, 10],
     [Elliot, Michael, 2, Jamie, Jingbo, 10],
     [Michael, Jamie, 6, Brendan, Jingbo, 10],
     [Milos, Michael, 9, JC, M2, 10],
     [Jingbo, Brendan, 10, JC, M2, 3],
 
+    # 2
     [Brendan, Jingbo, 10, Elliot, Milos, 1],
     [Brendan, Jingbo, 10, Elliot, Milos, 3],
     [Brendan, Jingbo, 10, Elliot, Milos, 3],
@@ -87,6 +89,7 @@ doubles = [
     [Michael, Greg, 10, Jamie, JC, 6],
     [Michael, Jingbo, 3, Jamie, JC, 7],
 
+    # 3
     [Elliot, Brendan, 9, Jingbo, Michael, 10],
     [Jingbo, Michael, 8, Jamie, Brendan, 10],
     [MD, Michael, 10, JC, Omid, 9],
@@ -126,6 +129,7 @@ doubles = [
     [Jamie, Maya, 10, Elliot, Jingbo, 9],
     [Elliot, Michael, 10, Maya, Jamie, 6],
 
+    # 4
     [Elliot, Brendan, 10, Maya, Jingbo, 7],
     [Elliot, Jingbo, 10, Alex, Jamie, 3],
     [Michael, Milos, 5, Elliot, Jingbo, 10],
@@ -147,6 +151,7 @@ doubles = [
     [Elliot, ML, 4, Michael, Milos, 10],
     [Will, Elliot, 7, Michael, Craig, 10],
 
+    # 5
     [E, M, 10, JA, B, 5],
     [G, B, 10, E, M, 8],
     [E, JC, 8, B, J, 10],
@@ -169,6 +174,7 @@ doubles = [
     [D, O, 10, M, JC, 8],
     [MA, E, 2, B, O, 10],
 
+    # 6
     [E, JH, 10, N, G, 4],
     [E, JH, 10, N, G, 4],
     [E, JH, 10, B, M, 3],
@@ -192,6 +198,7 @@ doubles = [
     [JA, MA, 10, E, J, 9],
     [E, M, 10, MA, JA, 6],
 
+    # 7
     [G, M, 8, JC, H, 10],
     [G, M, 10, JC, H, 9],
     [E, L, 10, B, D, 9],
@@ -213,6 +220,7 @@ doubles = [
     [MC, MD, 10, JC, CW, 3],
     [MC, MD, 4, MLE, H, 10],
 
+    # 8
     [E, JA, 6, J, B, 10],
     [E, JA, 10, J, B, 8],
     [E, JA, 10, K, W, 2],
@@ -224,6 +232,7 @@ doubles = [
     [G, D, 10, B, L, 1],
     [B, M, 10, ML, MIL, 8],
 
+    # 9
     [JC, MI, 10, B, JACK, 9],
     [MI, ML, 10, B, JACK, 5],
     [MI, ML, 10, B, JACK, 4],
@@ -240,7 +249,7 @@ doubles = [
     [E, JC, 3, B, JAMIE, 10],
     [E, JC, 2, B, JAMIE, 10],
     [E, B, 0, JC, JAMIE, 10],
-    # [G, ANDY, 10, WILL, JK, 10],
+    [G, ANDY, 10, WILL, JK, 3],
     [E, J, 1, B, N, 10],
     [E, J, 9, B, N, 10],
     [E, B, 7, MI, J, 10],
@@ -264,6 +273,7 @@ doubles = [
     [JAM, GRE, 10, J, E, 7],
     [E, J, 10, MAYA, JAM, 6],
 
+    # 10
     [SLG, MD, 10, JC, ML, 6],
     [JC, ML, 10, SLG, MD, 3],
     [JC, MD, 10, DN, NW, 4],
@@ -298,6 +308,7 @@ doubles = [
     [MILOS, SLG, 10, NICK, BRENDAN, 7],
     [MILOS, SLG, 10, NICK, JAMIE, 6],
 
+    # 11
     [E, B, 10, JC, N, 7],
     [B, JW, 10, JC, N, 8, ],
     [E, MA, 8, JACK, MLE, 10],
@@ -325,6 +336,7 @@ doubles = [
     [JH, MC, 10, S, EC, 1],
     [E, B, 10, J, M, 7],
 
+    # 12
     [J, MI, 10, E, B, 6],
     [J, MI, 10, E, B, 6],
     [G, SLG, 10, JAMIE, JC, 1],
@@ -353,6 +365,7 @@ doubles = [
     [E, B, 4, N, J, 10],
     [JC, N, 10, E, B, 8],
 
+    # 13
     # SLC,GH,10,JC,
     [B, MC, 10, NC, JC, 1],
     [MD, JAMIE, 10, MC, B, 5],
@@ -363,7 +376,7 @@ doubles = [
     [GH, MC, 10, NC, MILOS, 3],
     [GH, E, 2, JINGBO, BRENDAN, 10],
     [JAMIE, MC, 8, JINGBO, BRENDAN, 10],
-    # AW,MC,10,CW,EC,5,
+    [AW, MC, 10, CW, EC, 5],
     [SL, MD, 10, NC, JC, 6],
     [SL, MD, 10, NC, JC, 8],
     [E, B, 10, M, MA, 7],
@@ -376,8 +389,8 @@ doubles = [
     [MC, MD, 10, BR, AJ, 4],
     [MC, MD, 10, EC, JC, 7],
     [MC, AJ, 10, BR, JC, 8],
-    # JC,B,10,J,CRAIG,7,
-    # B,JOSH,10,A,E,9,
+    [JC,B,10,J,CRAIG,7],
+    [B,JOSH,10,A,E,9],
     [JC, G, 10, MAYA, JOSH, 3],
     [B, JH, 10, MD, MC, 7],
     [MILOS, J, 10, B, A, 4],
@@ -396,9 +409,11 @@ doubles = [
     [J, MD, 10, E, G, 4],
     [J, MD, 10, JC, A, 4],
 
+    # 14
     [E, B, 8, M, J, 10],
     [M, JAMIE, 10, GR, JC, 9],
     # MG?
+    # [MC, JW, 10, HM, JI, 7],
     [J, JC, 10, JACK, M, 4],
     [J, E, 8, M, B, 10],
     [JC, JAMIE, 10, M, B, 9],
@@ -439,6 +454,7 @@ doubles = [
     [G, EC, 10, MC, B, 5],
     [G, E, 10, M, B, 8],
 
+    # 15
     [E, M, 10, B, JA, 6],
     [E, M, 10, MI, MLE, 7],
     [E, M, 10, MI, MLE, 4],
@@ -481,6 +497,7 @@ doubles = [
     [J, MD, 10, B, AL, 4],
     [A, EL, 8, J, MD, 10],
 
+    # 16
     [SLG, GH, 10, BD, ALEX, 4],
     [SLG, JC, 10, A, CRAG, 8],
     [GH, NC, 10, MD, MC, 6],
@@ -504,7 +521,7 @@ doubles = [
     [JAMIE, AJ, 10, BR, JW, 9],
     [GH, SLG, 10, NC, MC, 6],
     [GH, SLC, 10, JAMIE, MC, 7],
-    # [GH, SLG, 10, BD, JAMIE, 10],
+    [GH, SLG, 10, BD, JW, 4],
     [AJ, N, 8, B, JW, 10],
     [JH, JC, 10, B, JW, 6],
     [JH, JC, 10, E, AJ, 4],
@@ -532,6 +549,7 @@ doubles = [
     [MC, SLG, 6, JC, JAM, 10],
     [GH, SLG, 10, JINGBO, EC, 8],
 
+    # 17
     [J, MD, 10, JC, JACK, 2],
     [J, MD, 10, E, ALEX, 8],
     [J, MD, 10, ML, B, 0],
@@ -579,6 +597,7 @@ doubles = [
     [E, MI, 9, J, B, 3],
     [E, MI, 3, J, B, 10],
 
+    # 18
     [GH, CW, 10, JC, JH, 7],
     [GH, JC, 10, BR, EC, 6],
     [JC, ML, 10, MD, N, 4],
@@ -627,6 +646,7 @@ doubles = [
     [BR, MD, 9, JH, JC, 10],
     [MD, ML, 10, JW, J, 8],
 
+    # 19
     [J, E, 10, JC, MD, 8],
     [GH, SLG, 10, NG, JH, 5],
     [GH, SLG, 10, BR, EC, 9],
@@ -652,7 +672,8 @@ doubles = [
     [JW, MD, 10, B, MC, 6],
     [JW, MD, 10, B, MC, 5],
     [GH, JC, 10, MD, JW, 1],
-    # [JACK, B, 10, JC, JH, 10],
+    [JACK, B, 10, JC, GH, 2],
+    [BR, JW, 5, JC, JH, 10],
     [J, JW, 6, JH, JC, 10],
     [J, JH, 10, MC, E, 4],
     [MC, JC, 8, SLG, GH, 10],
@@ -672,6 +693,7 @@ doubles = [
     [GH, NC, 10, J, MC, 9],
     [MC, JC, 10, GH, SLG, 1],
 
+    # 20
     [E, J, 10, JW, B, 6],
     [E, J, 10, JW, B, 3],
     [E, J, 10, JW, B, 9],
@@ -691,14 +713,14 @@ doubles = [
     [E, B, 10, NC, SLG, 4],
     [JC, GH, 10, BR, MD, 3],
     [J, E, 10, G, JC, 6],
-    # J,E,4,G,JC,
+    # [J, E, 4, G, JC, 4]
     [J, JC, 10, B, JW, 4],
     [J, JC, 8, B, JW, 10],
     [J, JC, 10, B, JW, 8],
     [J, JC, 10, B, JW, 7],
     [J, JC, 10, B, JW, 5],
     [J, JC, 10, B, JW, 9],
-    # GH,JACK,10,BR,
+    [GH, JACK, 10, BR, JOSH, 3],
     [GH, JACK, 10, BR, JC, 7],
     [J, MD, 10, BR, JW, 6],
     [JC, SLG, 10, GH, NC, 1],
@@ -719,6 +741,7 @@ doubles = [
     [B, J, 10, E, MJ, 2],
     [E, J, 10, B, MJ, 6],
 
+    # 21
     [GH, JC, 10, MD, J, 8],
     [BR, EC, 10, MC, GH, 3],
     [BR, EC, 10, MC, GH, 7],
@@ -729,7 +752,6 @@ doubles = [
     [MD, MC, 10, BR, JW, 7],
     [J, MC, 10, JC, G, 6],
     [J, MC, 2, B, JW, 10],
-    # [J, MC, 10, B, JW, 10],
     [J, MC, 10, B, JW, 7],
     [J, MC, 10, JC, N, 5],
     [J, MC, 10, JC, N, 7],
@@ -768,6 +790,7 @@ doubles = [
     [BR, MC, 10, JW, E, 7],
     [B, MC, 7, J, G, 10],
 
+    # 22
     [MC, G, 10, E, MI, 3],
     [MC, G, 10, E, MI, 4],
     [G, MC, 10, B, J, 8],
@@ -792,7 +815,7 @@ doubles = [
     [GH, NC, 10, JW, AL, 4],
     [JC, BR, 10, GH, AL, 8],
     [JC, SLG, 4, MC, MD, 10],
-    # [JC, NC, 10, MC, MD, 10],
+    [JC, NC, 10, MC, MD, 9],
     [JC, GH, 10, MC, MD, 4],
     [JC, MD, 6, MC, GH, 10],
     [BR, MC, 10, MD, AW, 6],
@@ -814,6 +837,7 @@ doubles = [
     [MD, SLG, 10, NC, JC, 4],
     [J, MD, 10, B, MC, 3],
 
+    # 23
     [JC, BR, 10, JACK, EC, 8],
     [E, NC, 2, JACK, BR, 10],
     [E, MD, 5, JACK, BR, 10],
@@ -843,6 +867,7 @@ doubles = [
     [AW, EC, 10, AJ, MC, 4],
     [AW, EC, 8, AJ, MC, 10],
 
+    # 24
     [GH, JACK, 10, EC, JC, 3],
     [BR, MD, 10, JW, MC, 6],
     [BR, MD, 5, JC, GH, 10],
@@ -968,7 +993,7 @@ doubles = [
     [J, JW, 3, B, G, 10],
     [E, ASU, 1, B, G, 10],
 
-
+    # 25
     # 19 Sep
     [EC, GH, 10, WD, AJ, 2],
     [GH, BR, 10, MC, JW, 7],
@@ -1018,6 +1043,7 @@ doubles = [
     [B, GH, 9, E, JW, 10],
     [B, GH, 10, E, JW, 3],
 
+    # 26
     [JW, E, 10, B, MU, 4],
     [J, VS, 4, JW, E, 10],
     [MD, MU, 4, JW, E, 10],
