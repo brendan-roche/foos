@@ -27,7 +27,7 @@ def add_player():
 # endpoint to show all players
 @app.route("/player", methods=["GET"])
 def get_players():
-    all_players = Player.query.all()
+    all_players = Player.query.order_by(Player.name).all()
     result = players_schema.dump(all_players)
     return jsonify(result.data)
 
