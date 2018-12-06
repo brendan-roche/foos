@@ -1,7 +1,7 @@
 import sys
 import argparse
 
-from games import doubles
+from games import doubles, inActivePlayers
 from models.game import Game
 from models.player import Player
 
@@ -56,10 +56,10 @@ for g in games:
 
     game_number += 1
 
-    t1_p1 = Player.find_or_create(g['p1_players'][0])
-    t1_p2 = Player.find_or_create(g['p1_players'][1])
-    t2_p1 = Player.find_or_create(g['p2_players'][0])
-    t2_p2 = Player.find_or_create(g['p2_players'][1])
+    t1_p1 = Player.find_or_create(g['p1_players'][0], g['p1_players'][0] not in inActivePlayers)
+    t1_p2 = Player.find_or_create(g['p1_players'][1], g['p1_players'][1] not in inActivePlayers)
+    t2_p1 = Player.find_or_create(g['p2_players'][0], g['p2_players'][0] not in inActivePlayers)
+    t2_p2 = Player.find_or_create(g['p2_players'][1], g['p2_players'][1] not in inActivePlayers)
 
     game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'])
 

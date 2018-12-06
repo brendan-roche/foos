@@ -47,6 +47,8 @@ HW = 'HW'
 HS = 'HS'
 SF = 'SF'
 
+inActivePlayers = [AA, Aaron, ANDREW, Andy, CC, DAM, DYL, JK, JON, LK, MAYA, ML, NW, RAJ, S, SH, TIM, WILL, V, AW, AS, ER, KN, NE, HW, HS, SF]
+
 # Games.
 doubles = [
     [Elliot, JC, 7, Brendan, Maya, 10],

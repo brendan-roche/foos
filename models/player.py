@@ -12,6 +12,7 @@ class Player(db.Model):
 
     wins = db.Column(db.Integer, nullable=False, default=0)
     losses = db.Column(db.Integer, nullable=False, default=0)
+    active = db.Column(db.Boolean, nullable=False, default=True)
 
     updated = db.Column(db.DateTime, default=datetime.utcnow)
     created = db.Column(db.DateTime, default=datetime.utcnow)
@@ -54,11 +55,12 @@ class Player(db.Model):
                                         'Player.id == Team.player2_id)',
                             lazy=True)
 
-    def __init__(self, name, short_name):
+    def __init__(self, name, short_name, active = True):
         self.name = name
         self.short_name = short_name
         self.wins = 0
         self.losses = 0
+        self.active = active
         trueskill = Rating()
         self.trueskill = trueskill.mu
         self.trueskill_sigma = trueskill.sigma
@@ -68,12 +70,12 @@ class Player(db.Model):
         return Player.query.filter(Player.name == name).first()
 
     @staticmethod
-    def find_or_create(name):
+    def find_or_create(name, active = True):
         player = Player.find_player(name)
         if player:
             return player
 
-        new_player = Player(name, name)
+        new_player = Player(name, name, active)
         db.session.add(new_player)
         db.session.commit()
 
@@ -82,11 +84,11 @@ class Player(db.Model):
 
 class PlayerSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'wins', 'losses', 'trueskill', 'trueskill_sigma')
+        fields = ('id', 'name', 'active', 'wins', 'losses', 'trueskill', 'trueskill_sigma')
 
 class PlayerStatsSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'wins', 'losses', 'attacker', 'attacker_wins', 'defender', 'defender_wins', 'donuts', 'games')
+        fields = ('id', 'name', 'active', 'wins', 'losses', 'attacker', 'attacker_wins', 'defender', 'defender_wins', 'donuts', 'games')
 
 
 player_schema = PlayerSchema()
