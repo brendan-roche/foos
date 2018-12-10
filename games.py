@@ -5,6 +5,7 @@ Alex = A = ALEX = AJ = 'Alex'
 ANDREW = AH = 'Andrew H'
 Andy = ANDY = AN = AD = 'Andy'
 AL = ANGELO = 'Angelo'
+ARM = ARMIJIT = 'Armijit'
 Brendan = B = BR = BRENDAN = BD = R = 'Brendan'
 CC = 'Chloe'
 Craig = K = CW = CRAIG = KRAG = KRAIG = CR = CRAG = KW = KV = KR = 'Craig'
@@ -28,7 +29,7 @@ Milos = D = MD = MI = MIL = MILOS = 'Milos'
 Muhammad = MU = 'Muhammad'
 Nick = N = NICK = NICHOLAS = NC = NI = NG = 'Nick C'
 NW = 'Nick W'
-Omid = O = OM = 'Omid'
+Omid = O = OM = OV = 'Omid'
 RAJ = 'Rajan'
 S = 'Scott'
 Simon = SH = 'Simon H'
@@ -1374,6 +1375,32 @@ doubles = [
     [J, JH, 10, JW, MD, 4],
     [J, JW, 6, B, MU, 10],
     [B, MU, 10, JW, JH, 6],
+    [JC, GH, 10, EC, JW, 7],
+    # [JC, GH, 10, AJ, ?, 0],
+    [E, JI, 10, JC, NC, 3],
+    [JC, MU, 10, EC, OV, 3],
+
+    [GH, OV, 10, BR, EC, 9],
+    [B, GH, 10, JW, E, 9],
+    [B, GH, 10, MC, MD, 4],
+    [SLG, JC, 6, JW, MD, 10],
+    [EC, MU, 10, JW, JC, 9],
+    [MC, CW, 0, JW, JC, 10],
+    [B, N, 9, J, E, 10],
+    [B, MD, 10, Omid, MU, 7],
+    [B, Omid, 10, MD, MU, 9],
+    [B, MU, 10, MD, ARM, 1],
+    [B, MU, 10, JC, MC, 4],
+    [B, MU, 10, JW, MD, 5],
+    [B, MU, 10, JW, MD, 6],
+    [GH, NC, 10, JC, MU, 9],
+    [GH, NC, 9, JC, MU, 10],
+
+    [MU, JC, 10, B, EC, 7],
+    [B, MU, 10, JW, MC, 8],
+    [B, MU, 10, MD, MC, 3],
+    [B, MU, 10, MD, MC, 6],
+    [B, MC, 10, MD, JW, 9],
 ]
 
 singles = [
