@@ -94,7 +94,7 @@ eb open
 
 Currently base url on EB env is:
 
-http://foos-env.qezemyyhhg.ap-southeast-2.elasticbeanstalk.com
+http://foos.test.kounta.com
 
 
 
