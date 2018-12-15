@@ -84,11 +84,11 @@ class Player(db.Model):
 
 class PlayerSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'active', 'wins', 'losses', 'trueskill', 'trueskill_sigma')
+        fields = ('id', 'name', 'short_name', 'active', 'wins', 'losses', 'trueskill', 'trueskill_sigma')
 
 class PlayerStatsSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'active', 'wins', 'losses', 'attacker', 'attacker_wins', 'defender', 'defender_wins', 'donuts', 'games')
+        fields = ('id', 'name', 'short_name', 'active', 'wins', 'losses', 'attacker', 'attacker_wins', 'defender', 'defender_wins', 'donuts', 'games')
 
 
 player_schema = PlayerSchema()
