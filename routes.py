@@ -284,6 +284,8 @@ def get_players_stats():
     stats = db.session.query(
         Player.id,
         Player.name,
+        Player.short_name,
+        Player.active,
         label('wins', func.sum(case([(and_(
             or_(Player.id == Game.team1_attacker_id, Player.id == Game.team1_defender_id),
             Game.team1_score > Game.team2_score), 1), (and_(
