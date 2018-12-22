@@ -32,6 +32,8 @@ class Game(db.Model):
     team1_score = db.Column(db.Integer, nullable=False)
     team2_score = db.Column(db.Integer, nullable=False)
 
+    manual_entry = db.Column(db.Boolean, nullable=False, default=False)
+
     team1_rating = db.Column(db.Float, nullable=False, default=1000)
     team2_rating = db.Column(db.Float, nullable=False, default=1000)
 
@@ -61,7 +63,7 @@ class Game(db.Model):
     created = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __init__(self, team1_attacker_id, team1_defender_id, team2_attacker_id, team2_defender_id, team1_score,
-                 team2_score):
+                 team2_score, manual_entry):
         self.team1_attacker_id = team1_attacker_id
         self.team1_attacker = Player.query.get(team1_attacker_id)
         self.team1_defender_id = team1_defender_id
@@ -80,6 +82,7 @@ class Game(db.Model):
 
         self.team1_score = team1_score
         self.team2_score = team2_score
+        self.manual_entry = manual_entry
 
         t1_trueskill = Rating(self.team1.trueskill, self.team1.trueskill_sigma)
         t2_trueskill = Rating(self.team2.trueskill, self.team2.trueskill_sigma)
@@ -160,7 +163,7 @@ class GameSchema(ma.Schema):
     class Meta:
         # Fields to expose
         fields = ('id', 'team1_id', 'team2_id', 'team1_defender', 'team1_attacker', 'team2_defender', 'team2_attacker',
-                  'team1_score', 'team2_score', 'team1_rating', 'team2_rating', 'rating_change',
+                  'team1_score', 'team2_score', 'manual_entry', 'team1_rating', 'team2_rating', 'rating_change',
                   'team1_trueskill', 'team1_trueskill_sigma', 'team1_trueskill_change',
                   'team2_trueskill', 'team2_trueskill_sigma', 'team2_trueskill_change',
                   'team1_attacker_trueskill', 'team1_attacker_trueskill_sigma', 'team1_attacker_trueskill_change',

@@ -205,7 +205,8 @@ def add_game():
         team2_attacker_id,
         team2_defender_id,
         team1_score,
-        team2_score
+        team2_score,
+        False
     )
 
     db.session.add(new_game)

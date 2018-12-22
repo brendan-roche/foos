@@ -61,7 +61,7 @@ for g in games:
     t2_p1 = Player.find_or_create(g['p2_players'][0], g['p2_players'][0] not in inActivePlayers)
     t2_p2 = Player.find_or_create(g['p2_players'][1], g['p2_players'][1] not in inActivePlayers)
 
-    game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'])
+    game = Game(t1_p1.id, t1_p2.id, t2_p1.id, t2_p2.id, g['p1score'], g['p2score'], True)
 
     print(
         "%3d. %020s   %2.0f: %11.6f -> %11.6f (%+.6f) | %11.6f -> %11.6f (%+.6f, %11.6fσ)\n     %20s   %2.0f: %11.6f -> %11.6f (%+.6f) | %11.6f -> %11.6f (%+.6f, %11.6fσ)\n" % (
