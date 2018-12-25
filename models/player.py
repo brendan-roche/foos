@@ -8,7 +8,7 @@ from init import db, ma
 class Player(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), unique=True)
-    short_name = db.Column(db.String(20), unique=True)
+    short_name = db.Column(db.String(20))
 
     wins = db.Column(db.Integer, nullable=False, default=0)
     losses = db.Column(db.Integer, nullable=False, default=0)
@@ -70,12 +70,12 @@ class Player(db.Model):
         return Player.query.filter(Player.name == name).first()
 
     @staticmethod
-    def find_or_create(name, active = True):
+    def find_or_create(name, shortName, active = True):
         player = Player.find_player(name)
         if player:
             return player
 
-        new_player = Player(name, name, active)
+        new_player = Player(name, shortName, active)
         db.session.add(new_player)
         db.session.commit()
 

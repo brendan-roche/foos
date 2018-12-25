@@ -49,7 +49,16 @@ HS = 'HS'
 SF = 'SF'
 
 inActivePlayers = [AA, Aaron, ANDREW, Andy, CC, DAM, DYL, JK, JON, LK, MAYA, ML, NW, RAJ, S, SH, TIM, WILL, V, AW, AS, ER, KN, NE, HW, HS, SF]
-
+shortNames = {
+    Ajay: 'AJ',
+    Brendan: 'BR',
+    JC: 'JC',
+    Michael: 'MC',
+    MichaelLee: 'ML',
+    JH: 'JH',
+    KRAIG: 'Kraig',
+    SLG: 'SLG',
+}
 # Games.
 doubles = [
     [Elliot, JC, 7, Brendan, Maya, 10],
