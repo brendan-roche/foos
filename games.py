@@ -1421,6 +1421,14 @@ doubles = [
     [EC, MU, 10, JW, JC, 3],
     [EC, MU, 4, JW, JC, 10],
 
+    [MD, MU, 10, EC, JW, 6],
+    [MD, JJ, 10, JC, EC, 6],
+    [EC, JJ, 8, MU, MD, 10],
+    [EC, JJ, 10, MU, MD, 9],
+    [MD, JJ, 10, JC, EC, 7],
+    [MC, MD, 10, JC, NC, 7],
+    [MC, MD, 10, JC, NC, 6],
+
     #34
     [JC, JW, 6, MU, EC, 10],
     [B, MU, 10, MD, MC, 9],
@@ -1462,6 +1470,100 @@ doubles = [
     [B, MU, 10, N, JC, 5],
     [B, MU, 10, N, JC, 3],
     [B, MU, 10, JC, SLG, 8],
+    [EL, MD, 10, JC, NC, 5],
+    [EL, MD, 5, JC, NC, 10],
+    [EL, MD, 10, JC, NC, 9],
+    [MD, JJ, 10, MC, MU, 6],
+
+    [MD, NC, 6, MU, MC, 10],
+    [MD, NC, 10, MU, MC, 9],
+    [MD, NC, 8, MU, MC, 10],
+    [MD, NC, 7, MU, EC, 10],
+    [MU, MC, 7, JW, EC, 10],
+    [J, JW, 10, MU, MD, 8],
+    [MD, JJ, 7, MC, MU, 10],
+
+    #35 ~ 2019-01-02
+    [MD, MU, 5, EC, JW, 10],
+    [MD, MU, 10, JC, NC, 4],
+    [EC, JW, 6, JC, NC, 10],
+    [JH, EC, 7, JINGBO, JW, 10],
+    [EC, MU, 8, JINGBO, JW, 10],
+    [JC, MC, 10, MD, MU, 6],
+    [JC, MC, 10, JW, JINGBO, 8],
+    [JC, MC, 10, MD, NC, 4],
+    [JC, MC, 7, JW, JINGBO, 10],
+    [MD, Omid, 8, JW, JINGBO, 10],
+    [EC, MU, 7, JW, JINGBO, 10],
+    [GH, JC, 10, MU, JINGBO, 1],
+    [MC, JW, 9, JC, Omid, 10],
+    [MD, NC, 10, JC, Omid, 8],
+
+    [MU, JW, 10, NC, MC, 7],
+    [JW, JH, 10, MU, MD, 9],
+    [JW, EC, 5, OV, MU, 10],
+    [MD, NC, 10, EL, MU, 9],
+    [OV, MD, 1, MU, G, 10],
+    [MD, MC, 10, MU, EC, 7],
+    [MD, MC, 10, MU, EC, 7],
+    [EC, MU, 10, MD, GH, 8],
+    [EC, MU, 10, MC, JC, 4],
+    [JW, MD, 10, JC, MC, 6],
+    [JW, GH, 10, MU, MC, 6],
+    [JW, GH, 10, MU, MC, 3],
+    [MC, BR, 10, MU, MD, 9],
+    [MC, GH, 10, MU, EC, 1],
+    [EC, GH, 10, MU, MC, 5],
+
+    # 2019-01-15
+    [MU, BR, 9, MC, JW, 10],
+    [MU, BR, 10, JC, GH, 7],
+    [MD, SLG, 5, JC, GH, 10],
+    [MC, AJ, 5, JC, GH, 10],
+    [GH, JW, 10, MU, EC, 2],
+    [GH, JW, 10, MU, EC, 0],
+    # 2019-01-16
+    [GH, JW, 10, MC, MU, 5],
+    [BR, MU, 10, J, MC, 7],
+    [BR, MU, 10, J, EC, 9],
+    [BR, MU, 10, JC, MD, 3],
+    # 2019-01-18
+    [BR, MC, 10, EC, MU, 3],
+    [MU, BR, 10, E, MD, 5],
+    [MU, BR, 10, J, MD, 2],
+    [MU, BR, 10, J, MC, 4],
+    [MC, MU, 10, J, MD, 6],
+
+
+    #36 2019-01-21
+    [EC, GH, 10, MC, CW, 6],
+    [GH, MD, 10, MU, BR, 7],
+    [JW, MD, 10, MU, BR, 7],
+    [JW, MD, 10, NC, JC, 2],
+    [MU, B, 10, MC, MD, 5],
+    [JJ, JW, 10, B, AJ, 5],
+    [JJ, JW, 7, B, GH, 10],
+    [B, MU, 1, GH, JJ, 10],
+    # 2019-01-22
+    [JW, JH, 10, JINGBO, EC, 2],
+    [JW, EC, 10, NC, MD, 7],
+    [GH, MU, 10, EC, JOSH, 6],
+    [GH, MU, 10, JC, MC, 6],
+
+    # 2019-01-23
+    [B, MU, 10, EC, MC, 5],
+    [GH, JC, 6, MC, MU, 10],
+    [GH, JC, 10, MC, CW, 6],
+    [GH, JC, 10, JH, AJ, 6],
+    [B, J, 10, MU, MC, 5],
+    [B, J, 10, MU, MC, 7],
+    [B, J, 10, G, OM, 9],
+    # 2019-01-24
+    [B, MU, 10, OV, EC, 0],
+    [B, OV, 3, JIN, JW, 10],
+    # 2019-01-25
+    [MD, MC, 10, JC, CW, 7],
+    [MC, JC, 10, MD, CW, 1],
 ]
 
 singles = [
