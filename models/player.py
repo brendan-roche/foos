@@ -49,6 +49,17 @@ class Player(db.Model):
                                         ')',
                             lazy=True)
 
+    donuts = db.relationship('Game',
+                            primaryjoin='or_('
+                                        'and_(or_('
+                                        'Player.id == Game.team1_attacker_id,'
+                                        'Player.id == Game.team1_defender_id), Game.team1_score == 0),'
+                                        'and_(or_('
+                                        'Player.id == Game.team2_attacker_id,'
+                                        'Player.id == Game.team2_defender_id), Game.team2_score == 0)'
+                                        ')',
+                            lazy=True)
+
     teams = db.relationship('Team',
                             primaryjoin='or_('
                                         'Player.id == Team.player1_id,'

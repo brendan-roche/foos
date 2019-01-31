@@ -61,9 +61,9 @@ def player_lost_games(id):
     return jsonify(result.data)
 
 
-@app.route("/player/<id>/games/won", methods=["GET"])
+@app.route("/player/<id>/games/donuts", methods=["GET"])
 def player_won_games(id):
-    games = Player.query.get(id).won_games
+    games = Player.query.get(id).donuts
     result = games_schema.dump(games)
     return jsonify(result.data)
 
