@@ -1534,6 +1534,14 @@ doubles = [
     [MU, BR, 10, J, MC, 4],
     [MC, MU, 10, J, MD, 6],
 
+    # 2019-02-01
+    # bottom left column
+    [GH, VS, 10, JAMIE, Omid, 8],
+    # top row
+    [GH, JAMIE, 10, EC, JC, 4],
+    [GH, MC, 10, JW, MD, 5],
+    # 2019-02-04
+    [B, MU, 10, E, JH, 6],
 
     #36 2019-01-21
     [EC, GH, 10, MC, CW, 6],
@@ -1549,9 +1557,9 @@ doubles = [
     [JW, EC, 10, NC, MD, 7],
     [GH, MU, 10, EC, JOSH, 6],
     [GH, MU, 10, JC, MC, 6],
-
     # 2019-01-23
     [B, MU, 10, EC, MC, 5],
+
     [GH, JC, 6, MC, MU, 10],
     [GH, JC, 10, MC, CW, 6],
     [GH, JC, 10, JH, AJ, 6],
@@ -1564,6 +1572,56 @@ doubles = [
     # 2019-01-25
     [MD, MC, 10, JC, CW, 7],
     [MC, JC, 10, MD, CW, 1],
+    # 2019-01-26
+    [J, B, 10, G, MU, 9],
+    [J, GH, 6, Nick, E, 10],
+
+    [Nick, J, 10, JOSH, S, 9],
+    # 2019-01-27
+    [B, MU, 10, Jack, J, 7],
+    [Jack, J, 10, JC, MC, 3],
+    [Jack, J, 10, MC, MU, 9],
+    [JW, MU, 10, JC, MC, 3],
+    [JW, JC, 10, MU, MC, 4],
+    [JW, JC, 10, MU, MC, 9],
+    [JINGBO, JW, 10, MU, JC, 4],
+    # 2019-01-28
+    [GH, EC, 9, MU, BR, 10],
+    [Jack, JH, 8, J, B, 10],
+    [Jack, JH, 10, J, B, 2],
+    [JC, J, 6, JW, B, 10],
+    [JW, J, 10, B, MD, 5],
+    [B, MD, 10, E, MC, 1],
+
+    # 2019-02-04
+    # Bottom left column
+    [JW, E, 10, MU, BR, 7],
+
+
+    #37 2019-02-04
+    [MU, B, 10, JW, E, 7],
+    [B, NC, 1, JW, MU, 10],
+    [B, NC, 8, JW, MU, 10],
+    [EC, GH, 10, NC, BR, 6],
+    [EC, GH, 10, NC, BR, 7],
+    # 2019-02-05
+    [B, MU, 10, MC, J, 4],
+    [B, MU, 10, MC, J, 4],
+    # [B, ??, 10, NC, MU, 9],
+    [B, MU, 10, EC, JW, 9],
+    [B, MU, 10, EC, GH, 4],
+    # 2019-02-06
+    [JW, MC, 10, MU, JH, 8],
+    [JW, MC, 10, JINGBO, MD, 8],
+    [JW, MC, 5, JC, GH, 10],
+    [GH, JW, 4, MU, EC, 10],
+    [GH, JW, 10, MU, EC, 4],
+
+    # 2019-02-07
+    [MD, JW, 10, BR, MC, 9],
+    [BR, MC, 10, JW, MU, 2],
+    [GH, MU, 10, JW, MD, 9],
+    [BR, MU, 10, J, MD, 6],
 ]
 
 singles = [
