@@ -36,7 +36,7 @@ Simon = SH = 'Simon H'
 SimonL = SL = SLG = SIML = SIMONL = SLE = SIMON = SLC = SIM = 'Simon L'
 TIM = 'Tim'
 Will = W = WD = WILL = 'Will D'
-V = VS = 'Vorakot'
+V = VORA = VS = 'Vorakot'
 
 # Unknown players.
 AW = 'AW'
@@ -1818,6 +1818,53 @@ doubles = [
     [MU, B, 10, MD, MC, 9],
     [MC, B, 10, JC, G, 6],
     [MC, B, 10, JC, G, 9],
+    [MC, B, 10, JH, G, 8],
+    [MC, GH, 10, BR, EC, 6],
+    [JW, B, 10, E, JC, 3],
+    [JW, AJ, 10, BR, EC, 1],
+    [B, JC, 10, MU, MC, 8],
+    [JC, B, 10, E, V, 1],
+    [JC, B, 10, MD, MC, 9],
+
+    [MC, GH, 10, JC, MD, 6],
+    [E, B, 10, AJ, G, 5],
+    [MC, B, 10, JC, E, 7],
+    [MC, B, 10, MU, E, 6],
+    [OV, B, 10, MU, E, 4],
+    [OV, B, 10, MU, E, 8],
+    [JOSH, B, 10, MC, E, 4],
+    [GH, MC, 10, BR, J, 9],
+    [EC, MC, 3, BR, J, 10],
+    [EC, MC, 7, BR, J, 10],
+    [B, MU, 10, MC, JC, 3],
+    [B, MU, 10, MC, MD, 6],
+    [JB, JW, 10, MC, MD, 2],
+    [MC, B, 10, JW, J, 3],
+    [AJ, B, 10, JW, MC, 5],
+
+    [JW, AJ, 10, EC, NC, 3],
+    [JW, EL, 8, JB, AJ, 10],
+    [OV, B, 10, MD, JC, 6],
+    [OV, B, 4, MD, JC, 10],
+    [B, OV, 10, MD, JC, 9],
+    [AJ, B, 5, JH, E, 10],
+    [AJ, B, 10, JH, E, 4],
+    [B, J, 10, MD, E, 1],
+    [B, J, 10, MU, MD, 7],
+    [MU, B, 10, JC, MC, 2],
+    [MU, MC, 10, B, JC, 7],
+    [JC, B, 10, MC, GH, 7],
+    [MU, B, 10, MC, G, 6],
+    [JC, B, 10, MU, E, 5],
+
+    # 42
+    [N, B, 10, AJ, MU, 2],
+    [N, B, 5, MU, JC, 10],
+    [JW, JB, 2, MU, EC, 10],
+    [JW, JB, 10, MU, EC, 8],
+    [JW, JB, 10, MU, EC, 7],
+    [JC, MU, 10, GH, JW, 8],
+    [JW, B, 10, MD, E, 2],
 ]
 
 singles = [
